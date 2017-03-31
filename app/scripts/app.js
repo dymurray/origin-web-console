@@ -31,7 +31,8 @@ angular
     'angularMoment',
     'ab-base64',
     'openshiftCommonServices',
-    'openshiftCommonUI'
+    'openshiftCommonUI',
+    'webCatalog'
   ])
   .config(function ($routeProvider) {
     var overviewRoute;
@@ -51,11 +52,26 @@ angular
       };
     }
 
+    var landingPageRoute;
+    var projectsPageRoute = {
+      templateUrl: 'views/projects.html',
+      controller: 'ProjectsController'
+    };
+    if (_.get(window, 'OPENSHIFT_CONSTANTS.ENABLE_TECH_PREVIEW_FEATURE.service_catalog_landing_page')) {
+      landingPageRoute = {
+        templateUrl: 'views/landing-page.html',
+        controller: 'LandingPageController'
+      };
+      $routeProvider.when('/projects', projectsPageRoute);
+    } else {
+      landingPageRoute = projectsPageRoute;
+      $routeProvider.when('/projects', {
+        redirectTo: '/'
+      });
+    }
+
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/projects.html',
-        controller: 'ProjectsController'
-      })
+      .when('/', landingPageRoute)
       .when('/create-project', {
         templateUrl: 'views/create-project.html',
         controller: 'CreateProjectController'
