@@ -89,8 +89,8 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
   ],
 
   ENABLE_TECH_PREVIEW_FEATURE: {
-    service_catalog_landing_page: false,
-    pod_presets: false
+    service_catalog_landing_page: true,
+    pod_presets: true
   },
 
   SAMPLE_PIPELINE_TEMPLATE: {
@@ -438,9 +438,7 @@ angular.extend(window.OPENSHIFT_CONSTANTS, {
     }
   ],
   SAAS_OFFERINGS: [
-    {id: 1, title:  'Microservices Application', icon: 'fa fa-cubes',  url: 'https://www.redhat.com/en/technologies/virtualization', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.'},
-    {id: 2, title:  'Mobile Application', icon: 'fa fa-mobile',  url: 'https://www.redhat.com/en/technologies/mobile', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.'},
-    {id: 3, title:  'Integration Application', icon: 'fa fa-plug',  url: 'https://www.redhat.com/en/technologies/cloud-computing', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.'},
-    {id: 4, title:  'Business Process Application', icon: 'fa fa-cubes',  url: 'https://www.redhat.com/en/technologies/management', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.'},
+    {id: 1, title:  'OpenShift.io', image: 'images/code.svg', url: 'http://openshift.io', description: 'Collaborate at any scale across the development lifecycle, powered by Red Hat OpenShift.'},
+    {id: 2, title:  'OpenShift Dedicated',  image: 'images/dedicated.svg', url: 'https://www.openshift.com/dedicated/', description: 'Develop and manage powerful containerized applications with your own OpenShift cluster, operated by Red Hat.'}
   ]
 });
