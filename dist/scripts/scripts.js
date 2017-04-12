@@ -1068,8 +1068,8 @@ DISABLE_CUSTOM_METRICS:!1,
 DISABLE_WILDCARD_ROUTES:!0,
 AVAILABLE_KINDS_BLACKLIST:[ "Binding", "Ingress", "DeploymentConfigRollback" ],
 ENABLE_TECH_PREVIEW_FEATURE:{
-service_catalog_landing_page:!1,
-pod_presets:!1
+service_catalog_landing_page:!0,
+pod_presets:!0
 },
 SAMPLE_PIPELINE_TEMPLATE:{
 name:"jenkins-pipeline-example",
@@ -1351,28 +1351,16 @@ description:""
 } ],
 SAAS_OFFERINGS:[ {
 id:1,
-title:"Microservices Application",
-icon:"fa fa-cubes",
-url:"https://www.redhat.com/en/technologies/virtualization",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
+title:"OpenShift.io",
+image:"images/code.svg",
+url:"http://openshift.io",
+description:"Collaborate at any scale across the development lifecycle, powered by Red Hat OpenShift."
 }, {
 id:2,
-title:"Mobile Application",
-icon:"fa fa-mobile",
-url:"https://www.redhat.com/en/technologies/mobile",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
-}, {
-id:3,
-title:"Integration Application",
-icon:"fa fa-plug",
-url:"https://www.redhat.com/en/technologies/cloud-computing",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
-}, {
-id:4,
-title:"Business Process Application",
-icon:"fa fa-cubes",
-url:"https://www.redhat.com/en/technologies/management",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
+title:"OpenShift Dedicated",
+image:"images/dedicated.svg",
+url:"https://www.openshift.com/dedicated/",
+description:"Develop and manage powerful containerized applications with your own OpenShift cluster, operated by Red Hat."
 } ]
 }), angular.module("openshiftConsole", [ "ngAnimate", "ngCookies", "ngResource", "ngRoute", "ngSanitize", "openshiftUI", "kubernetesUI", "registryUI.images", "ui.bootstrap", "patternfly.charts", "patternfly.sort", "openshiftConsoleTemplates", "ui.ace", "extension-registry", "as.sortable", "ui.select", "angular-inview", "angularMoment", "ab-base64", "openshiftCommonServices", "openshiftCommonUI", "webCatalog" ]).config([ "$routeProvider", function(a) {
 var b;

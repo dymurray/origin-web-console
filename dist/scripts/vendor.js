@@ -61441,6 +61441,8 @@ a.exports = '<div class="config-top">\n  <form name="$ctrl.builderForm" class="f
 }, function(a, b) {
 a.exports = '<div class="center">\n  <div ng-if="!$ctrl.success && !$ctrl.error">\n    <div class="title">\n      Creating Application&hellip;\n    </div>\n  </div>\n  <div ng-if="$ctrl.success">\n    <div class="title">\n      Application Created <span class="fa fa-check success-check"></span>\n    </div>\n    <div class="sub-title center">\n      Continue to your project to view your application.\n    </div>\n    <div class="launch-service">\n      <!-- TODO: Correctly set baseProjectUrl -->\n      <a ng-href="{{$ctrl.selectedProject | projectUrl : $ctrl.baseProjectUrl}}" class="btn btn-primary order-btn">\n        View Project\n      </a>\n    </div>\n  </div>\n  <div ng-if="$ctrl.error">\n    <div class="title">Error <span class="fa fa-times text-danger"></span></div>\n    <div class="sub-title center">\n      <span ng-if="$ctrl.error.data.message">\n        {{$ctrl.error.data.message | upperFirst}}\n      </span>\n      <span ng-if="!$ctrl.error.data.message">\n        An error occurred creating the application.\n      </span>\n    </div>\n    <!-- TODO: Improve error message presentation -->\n    <ul ng-if="$ctrl.error.failure.length" class="failure-messages">\n      <li ng-repeat="failure in $ctrl.error.failure">\n        {{failure.data.message}}\n      </li>\n    </ul>\n  </div>\n  <div>\n    <a class="close-href" href="" ng-click="$ctrl.closePanel()">Close</a> this panel to browse other services.\n  </div>\n</div>\n';
 }, function(a, b) {
+a.exports = '<!-- TODO: remove Demo code file -->\n<div class="config-top order-service-configure-demo">\n    <form class="form-horizontal config-form">\n        <select-project selected-project="$ctrl.selectedProject" name-taken="$ctrl.nameTaken"></select-project>\n        <div class="form-group">\n            <label class="col-sm-4 control-label">* Secret</label>\n            <div class="col-sm-8">\n                <ui-select ng-model="$ctrl.demoData.amazonSecret">\n                    <ui-select-match placeholder="Secret name">\n                        {{$select.selected | displayName}}\n                    </ui-select-match>\n                    <ui-select-choices repeat="secret in $ctrl.demoOptions.amazonSecrets | filter: $select.search">\n                        <span ng-bind-html="secret | displayName | highlightKeywords : $select.search"></span>\n                    </ui-select-choices>\n                </ui-select>\n            </div>\n        </div>\n\n        <div class="form-group">\n            <label class="col-sm-4 control-label">* AWS Region</label>\n            <div class="col-sm-8">\n                <ui-select ng-model="$ctrl.demoData.amazonRegion">\n                    <ui-select-match placeholder="Region">\n                        {{$select.selected.displayName}}\n                    </ui-select-match>\n                    <ui-select-choices repeat="region in $ctrl.demoOptions.amazonRegions | filter: $select.search">\n                        <span ng-bind-html="region.displayName | highlightKeywords : $select.search"></span>\n                    </ui-select-choices>\n                </ui-select>\n            </div>\n        </div>\n\n        <div class="form-group">\n            <label class="col-sm-4 control-label">* DB Instance Class</label>\n            <div class="col-sm-8">\n                <ui-select ng-model="$ctrl.demoData.amazonRdsDbInstanceClass">\n                    <ui-select-match placeholder="Choose type">\n                        {{$select.selected.displayName}}\n                    </ui-select-match>\n                    <ui-select-choices repeat="instanceClass in $ctrl.demoOptions.amazonRdsDbInstanceClasses | filter: $select.search">\n                        <span ng-bind-html="instanceClass.displayName | highlightKeywords : $select.search"></span>\n                    </ui-select-choices>\n                </ui-select>\n            </div>\n        </div>\n        <div class="form-group">\n            <label class="col-sm-4 control-label" for="amazon-rds-instance-name">* DB Instance Name</label>\n            <div class="col-sm-8">\n                <input class="form-control" type="text" id="amazon-rds-instance-name" ng-model="$ctrl.demoData.amazonRdsDbInstanceName">\n            </div>\n        </div>\n        <div class="form-group">\n            <label class="col-sm-4 control-label" for="amazon-rds-storage">* Allocated Storage</label>\n            <div class="col-sm-8">\n                <input class="form-control demo-text-input-short" type="text" id="amazon-rds-storage" ng-model="$ctrl.demoData.amazonRdsDbAllocatedStorage">GB\n            </div>\n        </div>\n        <div class="row">\n            <div class="col-sm-4 show-advanced-links" ng-if="!$ctrl.showAdvanced">\n                <span class="fa fa-angle-right" aria-hidden="true"></span> <a href="" ng-click="$ctrl.showAdvanced = true"> Show Advanced Options</a>\n            </div>\n            <div class="col-sm-4 show-advanced-links" ng-if="$ctrl.showAdvanced">\n                <span class="fa fa-angle-down" aria-hidden="true"></span> <a href="" ng-click="$ctrl.showAdvanced = false"> Hide Advanced Options</a>\n            </div>\n            <div class="col-sm-8">\n                <div class="hr-middle" aria-hidden="true"></div>\n            </div>\n        </div>\n        <div class="form-group" ng-if="$ctrl.showAdvanced">\n            <label class="col-sm-4 control-label" for="amazon-rds-master-username">Master Username</label>\n            <div class="col-sm-8">\n                <input class="form-control" type="text" id="amazon-rds-master-username" ng-model="$ctrl.demoData.amazonRdsDbMasterUsername">\n            </div>\n        </div>\n        <div class="form-group" ng-if="$ctrl.showAdvanced">\n            <label class="col-sm-4 control-label" for="amazon-rds-master-password">Master Password</label>\n            <div class="col-sm-8">\n                <input class="form-control" type="password" id="amazon-rds-master-password" ng-model="$ctrl.demoData.amazonRdsDbMasterPassword">\n            </div>\n        </div>\n        <div class="form-group" ng-if="$ctrl.showAdvanced">\n            <label class="col-sm-4 control-label" for="amazon-rds-master-password-confirmation">Confirm Password</label>\n            <div class="col-sm-8">\n                <input class="form-control" type="password" id="amazon-rds-master-password-confirmation" ng-model="$ctrl.demoData.amazonRdsDbMasterPasswordConfirmation">\n            </div>\n        </div>\n    </form>\n    <div ng-if="$ctrl.error" class="col-sm-12 has-error">\n        <span class="help-block">{{$ctrl.error}}</span>\n    </div>\n</div>\n';
+}, function(a, b) {
 a.exports = '<div class="config-top">\n  <form name="$ctrl.forms.orderConfigureForm" class="form-horizontal config-form">\n    <select-project selected-project="$ctrl.selectedProject" name-taken="$ctrl.nameTaken"></select-project>\n    <!-- TODO: add parameters -->\n    <!-- <div class="form-group"> -->\n    <!--   <label class="col-sm-4 control-label" for="field1">Field 1</label> -->\n    <!--   <div class="col-sm-8"> -->\n    <!--     <input class="form-control" type="text" id="field1"> -->\n    <!--   </div> -->\n    <!-- </div> -->\n  </form>\n  <div ng-if="$ctrl.error" class="col-sm-12 has-error">\n    <span class="help-block">{{$ctrl.error}}</span>\n  </div>\n</div>\n';
 }, function(a, b) {
 a.exports = '<div class="config-top">\n  <div class="select-plans">\n    <h3>Select a Plan</h3>\n    <div ng-repeat="plan in $ctrl.serviceClass.resource.plans" class="radio">\n      <label>\n        <input\n          type="radio"\n          ng-model="$ctrl.planIndex"\n          ng-change="$ctrl.selectPlan(plan)"\n          value="{{$index}}">\n        <span class="plan-name">{{plan.osbMetadata.displayName || plan.name}}</span>\n        <!-- TODO: truncate long text -->\n        <div ng-if="plan.description">{{plan.description}}</div>\n        <!-- TODO: show plan bullets -->\n      </label>\n    </div>\n  </div>\n</div>\n';
@@ -61449,7 +61451,7 @@ a.exports = '<div class="col-md-12 center review-panel">\n  <div ng-if="!$ctrl.e
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(32);
+var d = c(33);
 b.catalogSearch = {
 bindings:{
 baseProjectUrl:"@",
@@ -61457,12 +61459,12 @@ imageStreams:"<",
 serviceClasses:"<"
 },
 controller:d.CatalogSearchController,
-template:c(23)
+template:c(24)
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(33);
+var d = c(34);
 b.createFromBuilder = {
 bindings:{
 baseProjectUrl:"@",
@@ -61470,16 +61472,16 @@ imageStream:"<",
 handleClose:"<"
 },
 controller:d.CreateFromBuilderController,
-template:c(24)
+template:c(25)
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(34);
+var d = c(35);
 b.landingPage = {
 bindings:{},
 controller:d.LandingPageController,
-template:c(25),
+template:c(26),
 transclude:{
 landingsearch:"landingsearch",
 landingheader:"landingheader",
@@ -61490,7 +61492,7 @@ landingside:"landingside"
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(35);
+var d = c(37);
 b.orderService = {
 bindings:{
 baseProjectUrl:"@",
@@ -61498,12 +61500,12 @@ serviceClass:"<",
 handleClose:"<"
 },
 controller:d.OrderServiceController,
-template:c(26)
+template:c(27)
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(36);
+var d = c(38);
 b.overlayPanel = {
 bindings:{
 showClose:"<",
@@ -61513,13 +61515,13 @@ fullHeight:"<",
 singleColumn:"<"
 },
 controller:d.OverlayPanelController,
-template:c(27),
+template:c(28),
 transclude:!0
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(37);
+var d = c(39);
 b.projectsSummary = {
 bindings:{
 baseProjectUrl:"@",
@@ -61528,36 +61530,36 @@ viewEditMembership:"&",
 startGettingStartedTour:"&"
 },
 controller:d.ProjectsSummaryController,
-template:c(28)
+template:c(29)
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(38);
+var d = c(40);
 b.saasList = {
 bindings:{
 saasTitle:"<?",
 saasOfferings:"<"
 },
 controller:d.SaasListController,
-template:c(29)
+template:c(30)
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(39);
+var d = c(41);
 b.selectProject = {
 bindings:{
 selectedProject:"=",
 nameTaken:"<"
 },
 controller:d.SelectProjectController,
-template:c(30)
+template:c(31)
 };
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(40);
+var d = c(42);
 b.servicesView = {
 bindings:{
 baseProjectUrl:"@",
@@ -61565,7 +61567,7 @@ serviceClasses:"<",
 imageStreams:"<"
 },
 controller:d.ServicesViewController,
-template:c(31)
+template:c(32)
 };
 }, function(a, b, c) {
 "use strict";
@@ -61582,28 +61584,16 @@ deployments:"dev_guide/deployments/how_deployments_work.html",
 d.set(window, "OPENSHIFT_CONSTANTS.HELP", e);
 var f = [ {
 id:1,
-title:"Microservices Application",
-icon:"fa fa-cubes",
-url:"https://www.redhat.com/en/technologies/virtualization",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
+title:"OpenShift.io",
+image:"images/code.svg",
+url:"http://openshift.io",
+description:"Collaborate at any scale across the development lifecycle, powered by Red Hat OpenShift."
 }, {
 id:2,
-title:"Mobile Application",
-icon:"fa fa-mobile",
-url:"https://www.redhat.com/en/technologies/mobile",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
-}, {
-id:3,
-title:"Integration Application",
-icon:"fa fa-plug",
-url:"https://www.redhat.com/en/technologies/cloud-computing",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
-}, {
-id:4,
-title:"Business Process Application",
-icon:"fa fa-cubes",
-url:"https://www.redhat.com/en/technologies/management",
-description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.  This is way too long! Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt."
+title:"OpenShift Dedicated",
+image:"images/dedicated.svg",
+url:"https://www.openshift.com/dedicated/",
+description:"Develop and manage powerful containerized applications with your own OpenShift cluster, operated by Red Hat."
 } ], g = [ {
 id:"languages",
 label:"Languages",
@@ -61685,6 +61675,22 @@ icon:"font-icon icon-jenkins"
 id:"pipelines",
 label:"Pipelines",
 icon:"fa fa-clone"
+} ]
+}, {
+id:"amazon",
+label:"Amazon",
+subCategories:[ {
+id:"analytics",
+label:"Analytics"
+}, {
+id:"content-delivery",
+label:"Content Delivery"
+}, {
+id:"database",
+label:"Database"
+}, {
+id:"networking",
+label:"Networking"
 } ]
 }, {
 id:"other",
@@ -61991,17 +61997,17 @@ b.ImageItem = h;
 }, function(a, b) {
 a.exports = '<!-- TODO: Should not have two ordering panels, combine with services view -->\n<overlay-panel show-panel="$ctrl.orderingPanelVisible" show-close="true" handle-close="$ctrl.closeOrderingPanel">\n  <order-service\n      ng-if="$ctrl.selectedServiceClass"\n      base-project-url="{{$ctrl.baseProjectUrl}}"\n      service-class="$ctrl.selectedServiceClass"\n      handle-close="$ctrl.closeOrderingPanel">\n  </order-service>\n  <create-from-builder\n      ng-if="$ctrl.selectedImageStream"\n      base-project-url="{{$ctrl.baseProjectUrl}}"\n      image-stream="$ctrl.selectedImageStream"\n      handle-close="$ctrl.closeOrderingPanel">\n  </create-from-builder>\n</overlay-panel>\n<div class="catalog-search">\n  <form role="form" class="landing-search-form search-pf has-button">\n    <div class="form-group has-clear">\n      <div class="search-pf-input-group">\n        <label for="search-input" class="sr-only">Search Catalog</label>\n        <span class="fa fa-search catalog-search-icon" aria-hidden="true"></span>\n        <input\n            id="search-input"\n            type="search"\n            class="form-control catalog-search-input"\n            placeholder="Search Catalog"\n            ng-model="$ctrl.searchText"\n            uib-typeahead="item.name for item in $ctrl.search($viewValue)"\n            typeahead-on-select="$ctrl.itemSelected($item)"\n            typeahead-template-url="catalog-search/catalog-search-result.html">\n        <button\n            type="button"\n            ng-if="$ctrl.searchText"\n            ng-click="$ctrl.searchText = \'\'"\n            class="clear">\n          <span class="sr-only">Clear Search Input</span>\n          <span class="pficon pficon-close" aria-hidden="true"></span>\n        </button>\n      </div>\n    </div>\n  </form>\n</div>\n';
 }, function(a, b) {
-a.exports = '<div class="order-service wizard-pf-body">\n  <div class="wizard-pf-steps">\n    <ul class="wizard-pf-steps-indicator">\n      <li class="wizard-pf-step" ng-class="{\n        active: step.selected,\n        visited: step.visited && !step.selected\n      }" ng-repeat="step in $ctrl.steps" data-tabgroup="{{$index}}">\n        <a ng-click="$ctrl.stepClick(step)"><span class="wizard-pf-step-number">{{$index + 1}}</span><span class="wizard-pf-step-title">{{step.label}}</span></a>\n      </li>\n    </ul>\n  </div>\n  <div class="container-fluid wizard-pf-main">\n    <div class="col-sm-6 order-service-details">\n      <div class="order-service-details-top">\n        <div class="pull-left">\n          <span class="icon {{$ctrl.imageStream.iconClass}}"></span>\n        </div>\n        <div class="service-title-area">\n          <div class="service-title">\n            <span class="name">\n              {{$ctrl.imageStream.name}}\n              {{$ctrl.istag.name}}\n            </span>\n          </div>\n          <div class="order-service-tags">\n            <span ng-repeat="tag in $ctrl.istag.annotations.tags.split(\',\')" class="tag">\n              {{tag}}\n            </span>\n          </div>\n        </div>\n        <div class="order-service-description-block">\n          <p ng-bind-html="$ctrl.istag.annotations.description | linky : \'_blank\'" class="builder-description"></p>\n          <p ng-if="$ctrl.istag.annotations.sampleRepo">\n            Sample Repository:\n            <!-- TODO: Use Git link filter, needs to be added to origin-web-common -->\n            <span ng-bind-html="$ctrl.istag.annotations.sampleRepo | linky : \'_blank\'">\n          </p>\n        </div>\n      </div>\n    </div>\n    <div class="col-sm-6 order-service-config">\n      <div ng-include="$ctrl.currentStep.view" class="wizard-pf-contents"></div>\n    </div>\n  </div>\n  <div class="config-bottom modal-footer wizard-pf-footer">\n    <button\n        type="button"\n        class="btn btn-default wizard-pf-dismiss"\n        ng-disabled="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Cancel\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-next"\n        ng-if="$ctrl.currentStep.id === \'configure\'"\n        ng-disabled="!$ctrl.builderForm.$valid"\n        ng-click="$ctrl.createApp()">\n      Create\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-close wizard-pf-dismiss"\n        ng-if="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Close\n    </button>\n  </div>\n</div>\n';
+a.exports = '<div class="order-service wizard-pf-body">\n  <div class="wizard-pf-steps">\n    <ul class="wizard-pf-steps-indicator">\n      <li class="wizard-pf-step" ng-class="{\n        active: step.selected,\n        visited: step.visited && !step.selected\n      }" ng-repeat="step in $ctrl.steps" data-tabgroup="{{$index}}">\n        <a ng-click="$ctrl.stepClick(step)"><span class="wizard-pf-step-number">{{$index + 1}}</span><span class="wizard-pf-step-title">{{step.label}}</span></a>\n      </li>\n    </ul>\n  </div>\n  <div class="container-fluid wizard-pf-main">\n    <div class="col-sm-6 order-service-details">\n      <div class="order-service-details-top">\n        <div class="service-icon">\n          <span class="icon {{$ctrl.imageStream.iconClass}}"></span>\n        </div>\n        <div class="service-title-area">\n          <div class="service-title">\n            {{$ctrl.imageStream.name}}\n            {{$ctrl.istag.name}}\n          </div>\n          <div class="order-service-tags">\n            <span ng-repeat="tag in $ctrl.istag.annotations.tags.split(\',\')" class="tag">\n              {{tag}}\n            </span>\n          </div>\n        </div>\n      </div>\n      <div class="order-service-description-block">\n        <p ng-bind-html="$ctrl.istag.annotations.description | linky : \'_blank\'" class="description"></p>\n        <p ng-if="$ctrl.istag.annotations.sampleRepo">\n          Sample Repository:\n          <!-- TODO: Use Git link filter, needs to be added to origin-web-common -->\n          <span ng-bind-html="$ctrl.istag.annotations.sampleRepo | linky : \'_blank\'">\n        </p>\n      </div>\n    </div>\n    <div class="col-sm-6 order-service-config">\n      <div ng-include="$ctrl.currentStep.view" class="wizard-pf-contents"></div>\n    </div>\n  </div>\n  <div class="config-bottom modal-footer wizard-pf-footer">\n    <button\n        type="button"\n        class="btn btn-default wizard-pf-dismiss"\n        ng-disabled="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Cancel\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-next"\n        ng-if="$ctrl.currentStep.id === \'configure\'"\n        ng-disabled="!$ctrl.builderForm.$valid"\n        ng-click="$ctrl.createApp()">\n      Create\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-close wizard-pf-dismiss"\n        ng-if="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Close\n    </button>\n  </div>\n</div>\n';
 }, function(a, b) {
 a.exports = '<div class="landing">\n  <div class="landing-search-area" ng-transclude="landingsearch"></div>\n  <div class="landing-main-area">\n    <div class="landing-header-area" ng-transclude="landingheader"></div>\n    <div class="landing-body-area">\n      <div ng-transclude="landingbody"></div>\n    </div>\n  </div>\n  <div class="landing-side-bar" ng-transclude="landingside"></div>\n</div>\n';
 }, function(a, b) {
-a.exports = '<div class="order-service wizard-pf-body">\n  <div class="wizard-pf-steps">\n    <ul class="wizard-pf-steps-indicator" ng-if="$ctrl.wizardReady">\n      <li class="wizard-pf-step" ng-class="{\n        active: step.selected,\n        visited: step.visited && !step.selected\n      }" ng-repeat="step in $ctrl.getSteps()" data-tabgroup="{{$index}}">\n        <a ng-click="$ctrl.stepClick(step)"><span class="wizard-pf-step-number">{{$index + 1}}</span><span class="wizard-pf-step-title">{{step.label}}</span></a>\n      </li>\n    </ul>\n  </div>\n  <div class="container-fluid wizard-pf-main">\n    <div class="col-sm-6 order-service-details">\n      <div class="order-service-details-top">\n        <div class="pull-left">\n          <span ng-if="!$ctrl.imageUrl" class="icon {{$ctrl.iconClass}}"></span>\n          <!-- TODO: Need to size the image -->\n          <span ng-if="$ctrl.imageUrl"><img ng-src="{{$ctrl.imageUrl}}"></span>\n        </div>\n        <div class="service-title-area">\n          <div class="service-title">\n            <span class="name">{{$ctrl.serviceName}}</span>\n          </div>\n          <div ng-if="$ctrl.serviceClass.resource.osbTags" class="order-service-tags">\n            <span ng-repeat="tag in $ctrl.serviceClass.resource.osbTags" class="tag">\n              {{tag}}\n            </span>\n          </div>\n        </div>\n        <div class="order-service-description-block">\n          <div ng-if="$ctrl.currentStep.id !== \'plans\' && $ctrl.selectedPlan" class="h3">\n            Plan {{$ctrl.selectedPlan.osbMetadata.displayName || $ctrl.selectedPlan.name}}\n          </div>\n          <p ng-if="$ctrl.description" ng-bind-html="$ctrl.description | linky : \'_blank\'" class="description"></p>\n          <p ng-if="$ctrl.longDescription" ng-bind-html="$ctrl.longDescription | linky : \'_blank\'" class="description"></p>\n          <p ng-if="$ctrl.serviceClass.resource.osbMetadata.documentationUrl">\n            <a ng-href="{{$ctrl.serviceClass.resource.osbMetadata.documentationUrl}}" target="_blank" class="learn-more-link">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>\n          </p>\n        </div>\n      </div>\n    </div>\n    <div class="col-sm-6 order-service-config">\n      <div ng-include="$ctrl.currentStep.view" class="wizard-pf-contents"></div>\n    </div>\n  </div>\n  <div class="config-bottom modal-footer wizard-pf-footer">\n    <!--\n      Only use the `btn-cancel wizard-pf-cancel` classes when there\'s a Back\n      button, otherwise there\'s an odd gap between Cancel and Next when there\n      are only two buttons in the wizard.\n    -->\n    <button\n        type="button"\n        class="btn btn-default wizard-pf-dismiss"\n        ng-class="{ \'btn-cancel wizard-pf-cancel\': $ctrl.plans.length > 1 }"\n        ng-disabled="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Cancel\n    </button>\n    <!-- Hide the button when only one plan. It will never be enabled. -->\n    <button\n        type="button"\n        class="btn btn-default wizard-pf-back"\n        ng-if="$ctrl.plans.length > 1"\n        ng-disabled="$ctrl.currentStep.id !== \'configure\'"\n        ng-click="$ctrl.previousStep()">\n      <span class="fa fa-angle-left" aria-hidden="true"></span>\n      Back\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-next"\n        ng-if="$ctrl.currentStep.id !== \'configure\' && $ctrl.currentStep.id !== \'results\'"\n        ng-click="$ctrl.nextStep()">\n      Next\n      <span class="fa fa-angle-right" aria-hidden="true"></span>\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-next"\n        ng-if="$ctrl.currentStep.id === \'configure\'"\n        ng-disabled="!$ctrl.selectedProject || $ctrl.currentStep.id === \'results\' || $ctrl.forms.orderConfigureForm.$invalid"\n        ng-click="$ctrl.provisionService()">\n      Create\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-close wizard-pf-dismiss"\n        ng-if="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Close\n    </button>\n  </div>\n</div>\n';
+a.exports = '<div class="order-service wizard-pf-body"\n     ng-class="{ \'order-service-demo\': $ctrl.demo }">\n  <div class="wizard-pf-steps">\n    <ul class="wizard-pf-steps-indicator" ng-if="$ctrl.wizardReady">\n      <li class="wizard-pf-step" ng-class="{\n        active: step.selected,\n        visited: step.visited && !step.selected\n      }" ng-repeat="step in $ctrl.getSteps()" data-tabgroup="{{$index}}">\n        <a ng-click="$ctrl.stepClick(step)"><span class="wizard-pf-step-number">{{$index + 1}}</span><span class="wizard-pf-step-title">{{step.label}}</span></a>\n      </li>\n    </ul>\n  </div>\n  <div class="container-fluid wizard-pf-main">\n    <div class="col-sm-6 order-service-details">\n      <div class="order-service-details-top">\n        <div class="service-icon">\n          <span ng-if="!$ctrl.imageUrl" class="icon {{$ctrl.iconClass}}"></span>\n          <span ng-if="$ctrl.imageUrl" class="image"><img ng-src="{{$ctrl.imageUrl}}" alt=""></span>\n        </div>\n        <div class="service-title-area">\n          <div class="service-title">\n            {{$ctrl.serviceName}}\n          </div>\n          <div ng-if="$ctrl.serviceClass.resource.osbTags" class="order-service-tags">\n            <span ng-repeat="tag in $ctrl.serviceClass.resource.osbTags" class="tag">\n              {{tag}}\n            </span>\n          </div>\n        </div>\n      </div>\n      <div class="order-service-description-block">\n        <p ng-if="$ctrl.currentStep.id !== \'plans\' && ($ctrl.selectedPlan.osbMetadata.displayName || $ctrl.selectedPlan.description)">\n          <span ng-if="$ctrl.selectedPlan.osbMetadata.displayName">\n            Plan {{$ctrl.selectedPlan.osbMetadata.displayName}}\n            <span ng-if="$ctrl.selectedPlan.description">&ndash;</span>\n          </span>\n          <span ng-if="$ctrl.selectedPlan.description">{{$ctrl.selectedPlan.description}}</span>\n        </p>\n        <p ng-if="$ctrl.description" ng-bind-html="$ctrl.description | linky : \'_blank\'" class="description"></p>\n        <p ng-if="$ctrl.longDescription" ng-bind-html="$ctrl.longDescription | linky : \'_blank\'" class="description"></p>\n          <!-- vvv remove demo code vvv-->\n          <div ng-if="$ctrl.descriptionBullets">\n              <ul>\n                  <li ng-repeat="bullet in $ctrl.descriptionBullets">\n                      {{bullet}}\n                  </li>\n              </ul>\n          </div>\n          <!-- ^^^ remove demo code ^^^ -->\n        <p ng-if="$ctrl.serviceClass.resource.osbMetadata.documentationUrl">\n          <a ng-href="{{$ctrl.serviceClass.resource.osbMetadata.documentationUrl}}" target="_blank" class="learn-more-link">Learn More <i class="fa fa-external-link" aria-hidden="true"></i></a>\n        </p>\n      </div>\n    </div>\n    <div class="col-sm-6 order-service-config">\n      <div ng-include="$ctrl.currentStep.view" class="wizard-pf-contents"></div>\n    </div>\n  </div>\n  <div class="config-bottom modal-footer wizard-pf-footer">\n    <!--\n      Only use the `btn-cancel wizard-pf-cancel` classes when there\'s a Back\n      button, otherwise there\'s an odd gap between Cancel and Next when there\n      are only two buttons in the wizard.\n    -->\n    <button\n        type="button"\n        class="btn btn-default wizard-pf-dismiss"\n        ng-class="{ \'btn-cancel wizard-pf-cancel\': $ctrl.plans.length > 1 }"\n        ng-disabled="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Cancel\n    </button>\n    <!-- Hide the button when only one plan. It will never be enabled. -->\n    <button\n        type="button"\n        class="btn btn-default wizard-pf-back"\n        ng-if="$ctrl.plans.length > 1"\n        ng-disabled="$ctrl.currentStep.id !== \'configure\'"\n        ng-click="$ctrl.previousStep()">\n      <span class="fa fa-angle-left" aria-hidden="true"></span>\n      Back\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-next"\n        ng-if="$ctrl.currentStep.id !== \'configure\' && $ctrl.currentStep.id !== \'results\'"\n        ng-click="$ctrl.nextStep()">\n      Next\n      <span class="fa fa-angle-right" aria-hidden="true"></span>\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-next"\n        ng-if="$ctrl.currentStep.id === \'configure\'"\n        ng-disabled="!$ctrl.selectedProject || $ctrl.currentStep.id === \'results\' || $ctrl.forms.orderConfigureForm.$invalid"\n        ng-click="$ctrl.provisionService()">\n      Create\n    </button>\n    <button\n        type="button"\n        class="btn btn-primary wizard-pf-close wizard-pf-dismiss"\n        ng-if="$ctrl.currentStep.id === \'results\'"\n        ng-click="$ctrl.closePanel()">\n      Close\n    </button>\n  </div>\n</div>\n';
 }, function(a, b) {
 a.exports = '<div class="catalogs-overlay-modal" role="dialog">\n  <div ng-if="$ctrl.shown" class="modal-backdrop fade in"></div>\n  <div ng-if="$ctrl.shown" class="catalogs-overlay-panel-wrapper">\n    <div class="catalogs-overlay-panel-grow-height">\n      <div class="catalogs-overlay-panel" ng-class="{\'catalogs-overlay-panel-full-height\' : $ctrl.fullHeight, \'catalogs-overlay-panel-single-column\' : $ctrl.singleColumn}">\n        <a ng-if="$ctrl.showClose" ng-click="$ctrl.closePanel()">\n          <span class="catalogs-overlay-panel-close pficon pficon-close"></span>\n        </a>\n        <div class="catalogs-overlay-panel-body" ng-transclude>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n';
 }, function(a, b) {
 a.exports = '<div class="catalog-projects-summary-panel">\n  <button ng-if="$ctrl.canCreate" class="create-button btn btn-primary" ng-click="$ctrl.openNewProjectPanel()">\n    <span class="fa fa-plus"></span>\n    <span class="create-button-text">Create Project</span>\n  </button>\n  <h2 class="primary" ng-if="!$ctrl.projects || !$ctrl.projects.length">Getting Started</h2>\n  <h2 class="primary" ng-if="$ctrl.projects && $ctrl.projects.length">My Projects</h2>\n  <div class="catalog-modal catalog-modal-create-project" ng-if="$ctrl.showNewProjectPanel">\n    <h4 class="catalog-modal-title">\n      Create Project\n    </h4>\n    <create-project alerts="$ctrl.alerts" is-dialog="true" redirect-action="$ctrl.onNewProject" on-cancel="$ctrl.closeNewProjectPanel"></create-project>\n    <a href="" class="catalog-modal-close" ng-click="$ctrl.closeNewProjectPanel()">\n      <span class="pficon pficon-close"></span>\n    </a>\n  </div>\n  <div ng-if="$ctrl.projects && $ctrl.projects.length" class="catalog-project-summary-list">\n    <div ng-if="$ctrl.totalProjects > $ctrl.maxDisplayProjects" class="projects-count">\n      <strong>{{$ctrl.maxDisplayProjects}}</strong>\n      of\n      <strong>{{$ctrl.totalProjects}}</strong>\n      Projects\n      <a href="{{$ctrl.projectsUrl}}" class="projects-view-all">View All</a>\n    </div>\n    <div id="catalog-projects-summary-list">\n      <div ng-repeat="project in $ctrl.projects track by (project | uid)" class="project-tile">\n        <div class="dropdown  dropdown-kebab-pf" uib-dropdown="">\n          <button class="btn btn-link uib-dropdown-toggle" type="button" id="dropdownKebab" aria-haspopup="true" aria-expanded="true" uib-dropdown-toggle>\n            <span class="fa fa-ellipsis-v"></span>\n          </button>\n          <ul class="uib-dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebab">\n            <li><a href="" ng-click="$ctrl.onViewMemebership(project)">View Membership</a></li>\n            <li><a href="" ng-click="$ctrl.editProject(project)">Edit Project</a></li>\n            <li>\n              <delete-project\n                  label="Delete Project"\n                  project-name="{{project.metadata.name}}"\n                  display-name="{{(project | displayName)}}"\n                  type-name-to-confirm="true"\n                  stay-on-current-page="true"\n                  alerts="$ctrl.alerts">\n              </delete-project>\n            </li>\n          </ul>\n        </div>\n        <h3 class="project-tile-header">\n          <span ng-if="project.statusIconClass" class="project-status {{project.statusIconClass}}"></span>\n          <a href="{{project | projectUrl : $ctrl.baseProjectUrl}}" class="project-title">{{project | displayName}}</a>\n        </h3>\n        <p class="project-date">\n          <span ng-if="project | displayName : true"><span ng-bind-html="project.metadata.name"></span> &ndash;</span>\n          created\n          <span ng-if="project | annotation : \'openshift.io/requester\'">by <span ng-bind-html="project | annotation : \'openshift.io/requester\'"></span></span>\n          <span am-time-ago="project.metadata.creationTimestamp"></span>\n        </p>\n        <div class="project-description" ng-if="project | description">\n          <truncate-long-text content="project | description" use-word-boundary="true" limit="120"></truncate-long-text>\n        </div>\n        <div class="catalog-modal catalog-modal-edit-project" ng-if="$ctrl.showEditProjectPanel && $ctrl.edittingProject === project">\n          <h4 class="catalog-modal-title">\n            Edit Project\n          </h4>\n          <edit-project project="$ctrl.edittingProject" is-dialog="true" alerts="$ctrl.alerts" redirect-action="$ctrl.onEditProject" on-cancel="$ctrl.closeEditProjectPanel"></edit-project>\n          <a href="" class="catalog-modal-close" ng-click="$ctrl.closeEditProjectPanel()">\n            <span class="pficon pficon-close"></span>\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div ng-if="$ctrl.showGetStarted">\n    <div class="getting-started-panel">\n      <h2 class="secondary" ng-if="$ctrl.projects && $ctrl.projects.length > 0">Getting Started</h2>\n      <button class="getting-started-button btn btn-default" ng-class="{\'with-projects\': $ctrl.projects && $ctrl.projects.length}" ng-click="$ctrl.handleGettingStartedClick()">\n        <span class="fa fa-info-circle fa-2"></span>\n        <span class="getting-started-button-text">Start Guided Tour</span>\n      </button>\n    </div>\n    <div class="resources-panel">\n      <h2 class="secondary">Resources</h2>\n      <p>\n        {{$ctrl.resourceDescription}}\n      </p>\n      <ul>\n        <li ng-repeat="resource in $ctrl.resourceLinks">\n          <a href="{{resource.href}}" target="_blank" title="{{resource.href}}">{{resource.title}}</a>\n        </li>\n      </ul>\n    </div>\n  </div>\n</div>\n';
 }, function(a, b) {
-a.exports = '<span ng-if="$ctrl.hasSaasOfferings()" class="saas-offerings-container">\n  <h1 ng-if="$ctrl.saasTitle">{{$ctrl.saasTitle}}</h1>\n  <div class="saas-list" items="$ctrl.saasOfferings">\n    <div class="card" ng-repeat="item in $ctrl.saasOfferings">\n      <a href="" class="card-content" ng-click="$ctrl.handleClick(item)">\n        <span class="card-icon {{item.icon}}"></span>\n        <span class="card-title">{{item.title}}</span>\n        <truncate-long-text\n                class="card-description hidden-xs"\n                content="item.description"\n                limit="120"\n                use-word-boundary="true">\n        </truncate-long-text>\n      </a>\n    </div>\n  </div>\n</span>\n';
+a.exports = '<span ng-if="$ctrl.hasSaasOfferings()" class="saas-offerings-container">\n  <h1 ng-if="$ctrl.saasTitle">{{$ctrl.saasTitle}}</h1>\n  <div class="saas-list" items="$ctrl.saasOfferings">\n    <div class="card" ng-repeat="item in $ctrl.saasOfferings">\n      <a href="" class="card-content" ng-click="$ctrl.handleClick(item)">\n        <span class="card-icon {{item.icon}}"><img ng-if="item.image" ng-src="{{item.image}}"></span>\n        <span class="card-title">{{item.title}}</span>\n        <truncate-long-text\n                class="card-description hidden-xs"\n                content="item.description"\n                limit="120"\n                use-word-boundary="true">\n        </truncate-long-text>\n      </a>\n    </div>\n  </div>\n</span>\n';
 }, function(a, b) {
 a.exports = '<ng-form>\n    <div class="form-group">\n        <label class="col-sm-4 control-label" for="project">Add to Project</label>\n      <div class="col-sm-8">\n        <ui-select ng-model="$ctrl.selectedProject">\n          <ui-select-match placeholder="Project name">\n            {{$select.selected | displayName}}\n          </ui-select-match>\n          <ui-select-choices repeat="project in $ctrl.projects | searchProjects : $select.search">\n            <span ng-bind-html="project | displayName | highlightKeywords : $select.search"></span>\n                <span ng-if="project | displayName : true" class="small text-muted">\n                  <span ng-if="project.metadata.name">&ndash;</span>\n                  <span ng-bind-html="project.metadata.name | highlightKeywords : $select.search"></span>\n                </span>\n          </ui-select-choices>\n        </ui-select>\n      </div>\n    </div>\n</ng-form>\n\n<ng-form name="$ctrl.forms.createProjectForm"\n    ng-if="$ctrl.isNewProject()">\n  <div class="form-group">\n    <label for="name" class="col-sm-4 control-label required">Project Name</label>\n    <div class="col-sm-8" ng-class="{\'has-error\': ($ctrl.forms.createProjectForm.name.$error.pattern && $ctrl.forms.createProjectForm.name.$touched) || $ctrl.nameTaken}">\n      <input class="form-control"\n          name="name"\n          id="name"\n          placeholder="my-project"\n          type="text"\n          required\n          take-focus\n          minlength="2"\n          maxlength="63"\n          pattern="[a-z0-9]([-a-z0-9]*[a-z0-9])?"\n          aria-describedby="nameHelp"\n          ng-model="$ctrl.selectedProject.metadata.name"\n          ng-model-options="{ updateOn: \'default blur\' }"\n          ng-change="$ctrl.onNewProjectNameChange()"\n          autocorrect="off"\n          autocapitalize="off"\n          spellcheck="false">\n      <div class="help-block">A unique name for the project.</div>\n      <div class="has-error" ng-if="$ctrl.forms.createProjectForm.name.$error.minlength && $ctrl.forms.createProjectForm.name.$touched">\n        <span id="nameHelp" class="help-block">\n          Name must have at least two characters.\n        </span>\n      </div>\n      <div class="has-error" ng-if="$ctrl.forms.createProjectForm.name.$error.pattern && $ctrl.forms.createProjectForm.name.$touched">\n        <span id="nameHelp" class="help-block">\n          Project names may only contain lower-case letters, numbers, and dashes.\n          They may not start or end with a dash.\n        </span>\n      </div>\n      <div class="has-error" ng-if="$ctrl.nameTaken">\n        <span class="help-block">\n          This name is already in use. Please choose a different name.\n        </span>\n      </div>\n    </div>\n  </div>\n\n  <div class="form-group">\n    <label for="displayName" class="col-sm-4 control-label">Project Display Name</label>\n    <div class="col-sm-8">\n      <input class="form-control"\n        name="displayName"\n        id="displayName"\n        placeholder="My Project"\n        type="text"\n        ng-model="$ctrl.selectedProject.metadata.annotations[\'new-display-name\']">\n    </div>\n  </div>\n\n  <div class="form-group">\n    <label for="description" class="col-sm-4 control-label">Project Description</label>\n    <div class="col-sm-8">\n      <textarea class="form-control"\n        name="description"\n        id="description"\n        placeholder="A short description."\n        ng-model="$ctrl.selectedProject.metadata.annotations[\'openshift.io/description\']"></textarea>\n    </div>\n  </div>\n</ng-form>\n';
 }, function(a, b) {
@@ -62039,7 +62045,7 @@ this.searchDeferred.resolve(e), this.searchDeferred = null;
 }, a.prototype.search = function(a) {
 return a ? this.loaded ? this.filterForKeywords(a) :(this.searchDeferred = this.$q.defer(), this.searchDeferred.promise) :[];
 }, a.prototype.filterForKeywords = function(a) {
-var b = this.KeywordService.generateKeywords(a), c = this.KeywordService.filterForKeywords(this.allItems, [ "name", "tags", "resource.osbMetadata.tags" ], b);
+var b = this.KeywordService.generateKeywords(a), c = this.KeywordService.filterForKeywords(this.allItems, [ "name", "tags", "resource.osbTags" ], b);
 return d.take(c, 5);
 }, a;
 }();
@@ -62047,7 +62053,7 @@ e.$inject = [ "$q", "Catalog", "KeywordService" ], b.CatalogSearchController = e
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
-var d = c(1), e = c(0), f = c(41), g = function() {
+var d = c(1), e = c(0), f = c(43), g = function() {
 function a(a, b, c, d, e, f, g) {
 this.ctrl = this, this.$scope = a, this.$filter = b, this.$location = c, this.$q = d, this.BuilderAppService = e, this.DataService = f, this.Logger = g;
 }
@@ -62163,8 +62169,128 @@ this.ctrl.searchText = "";
 b.LandingPageController = d;
 }, function(a, b, c) {
 "use strict";
+b.__esModule = !0, b.demoOptions = {
+amazonRegions:[ {
+key:"us-east-1",
+displayName:"US East (Virginia)"
+}, {
+key:"us-east-2",
+displayName:"US East (Ohio)"
+}, {
+key:"us-west-1",
+displayName:"US West (N. California)"
+}, {
+key:"us-west-2",
+displayName:"US West (Oregon)"
+}, {
+key:"ca-central-1",
+displayName:"Canada (Central)"
+}, {
+key:"eu-west-1",
+displayName:"EU (Ireland)"
+}, {
+key:"eu-central-1",
+displayName:"EU (Frankfurt)"
+}, {
+key:"eu-west-2",
+displayName:"EU (London)"
+}, {
+key:"ap-southeast-1",
+displayName:"Asia Pacific (Singapore)"
+}, {
+key:"ap-southeast-2",
+displayName:"Asia Pacific (Sydney)"
+}, {
+key:"ap-northeast-2",
+displayName:"Asia Pacific (Seoul)"
+}, {
+key:"ap-northeast-1",
+displayName:"Asia Pacific (Tokyo)"
+}, {
+key:"ap-south-1",
+displayName:"Asia Pacific (Mumbai)"
+}, {
+key:"sa-east-1",
+displayName:"South America (São Paulo)"
+} ],
+amazonRdsPostgresDescription:"PostgreSQL is a powerful, open-source object-relational database system with a strong reputation of reliability, stability, and correctness.",
+amazonRdsPostgresDescriptionBullets:[ "High reliability and stability in a variety of workloads.", "Advanced features to perform in high-volume environments. ", "Vibrant open-source community that releases new features multiple times per year. ", "Supports multiple extensions that add even more functionality to the database. ", "The most Oracle-compatible open-source database. " ],
+amazonRdsPostgresDescriptionDocs:"http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html",
+amazonRdsPostgresPlans:[ {
+name:"default",
+description:"Use Multi-AZ Deployment and Provisioned IOPS Storage as defaults for high availability and fast, consistent performance.",
+osbFree:!1,
+osbMetadata:{
+displayName:"Production"
+}
+}, {
+name:"default",
+description:"This instance is intended for use outside of production or under the RDS Free Usage Tier.",
+osbFree:!0,
+osbMetadata:{
+displayName:"Dev/Test"
+}
+} ],
+amazonRdsDbInstanceClasses:[ {
+key:"db.t2.micro",
+displayName:"db.t2.micro — 1 vCPU, 1 GiB RAM"
+}, {
+key:"db.t2.small",
+displayName:"db.t2.small — 1 vCPU, 2 GiB RAM"
+}, {
+key:"db.t2.medium",
+displayName:"db.t2.medium — 2 vCPU, 4 GiB RAM"
+}, {
+key:"db.t2.large",
+displayName:"db.t2.large — 2 vCPU, 8 GiB RAM"
+}, {
+key:"db.m4.large",
+displayName:"db.m4.large — 2 vCPU, 8 GiB RAM"
+}, {
+key:"db.m4.xlarge",
+displayName:"db.m4.xlarge — 4 vCPU, 16 GiB RAM"
+}, {
+key:"db.m4.2xlarge",
+displayName:"db.m4.2xlarge — 8 vCPU, 32 GiB RAM"
+}, {
+key:"db.m4.4xlarge",
+displayName:"db.m4.4xlarge — 16 vCPU, 64 GiB RAM"
+}, {
+key:"db.m4.10xlarge",
+displayName:"db.m4.10xlarge — 40 vCPU, 160 GiB RAM"
+}, {
+key:"db.m3.medium",
+displayName:"db.m3.medium — 1 vCPU, 3.75 GiB RAM"
+}, {
+key:"db.m3.large",
+displayName:"db.m3.large — 2 vCPU, 7.5 GiB RAM"
+}, {
+key:"db.m3.xlarge",
+displayName:"db.m3.xlarge — 4 vCPU, 15 GiB RAM"
+}, {
+key:"db.m3.2xlarge",
+displayName:"db.m3.2xlarge — 8 vCPU, 30 GiB RAM"
+}, {
+key:"db.r3.large",
+displayName:"db.r3.large — 2 vCPU, 15 GiB RAM"
+}, {
+key:"db.r3.xlarge",
+displayName:"db.r3.xlarge — 4 vCPU, 30.5 GiB RAM"
+}, {
+key:"db.r3.2xlarge",
+displayName:"db.r3.2xlarge — 8 vCPU, 61 GiB RAM"
+}, {
+key:"db.r3.4xlarge",
+displayName:"db.r3.4xlarge — 16 vCPU, 122 GiB RAM"
+}, {
+key:"db.r3.8xlarge",
+displayName:"db.r3.8xlarge — 32 vCPU, 244 GiB RAM"
+} ]
+};
+}, function(a, b, c) {
+"use strict";
 b.__esModule = !0;
-var d = c(1), e = c(0), f = function() {
+var d = c(1), e = c(0), f = c(36), g = function() {
 function a(a, b, c, d) {
 var f = this;
 this.ctrl = this, this.watches = [], this.watchResults = function(a, b, c) {
@@ -62179,7 +62305,7 @@ type:"ProvisionFailed"
 }, this.$scope = a, this.$filter = b, this.DataService = c, this.Logger = d;
 }
 return a.prototype.$onInit = function() {
-this.ctrl.iconClass = this.ctrl.serviceClass.iconClass || "fa fa-cubes", this.ctrl.imageUrl = this.ctrl.serviceClass.imageUrl, this.ctrl.serviceName = this.ctrl.serviceClass.name, this.ctrl.description = this.ctrl.serviceClass.description, this.ctrl.longDescription = this.ctrl.serviceClass.longDescription, this.ctrl.plans = e.get(this, "ctrl.serviceClass.resource.plans", []), this.ctrl.forms = {}, this.ctrl.selectedPlan = e.first(this.ctrl.plans), this.ctrl.selectedProject = {}, this.ctrl.planIndex = 0, this.ctrl.steps = [ {
+this.ctrl.iconClass = this.ctrl.serviceClass.iconClass || "fa fa-cubes", this.ctrl.imageUrl = this.ctrl.serviceClass.imageUrl, this.ctrl.serviceName = this.ctrl.serviceClass.name, this.ctrl.description = this.ctrl.serviceClass.description, this.ctrl.longDescription = this.ctrl.serviceClass.longDescription, this.ctrl.plans = e.get(this, "ctrl.serviceClass.resource.plans", []), this.ctrl.forms = {}, this.ctrl.selectedPlan = e.first(this.ctrl.plans), this.ctrl.selectedProject = {}, this.ctrl.previousSelectedProject = this.ctrl.selectedProject, this.ctrl.planIndex = 0, this.ctrl.steps = [ {
 id:"plans",
 label:"Plans",
 view:"order-service/order-service-plans.html"
@@ -62191,7 +62317,7 @@ view:"order-service/order-service-configure.html"
 label:"Results",
 id:"results",
 view:"order-service/order-service-review.html"
-} ], this.ctrl.plans.length < 2 && this.ctrl.steps.shift(), this.gotoStep(this.ctrl.steps[0]), this.ctrl.nameTaken = !1, this.ctrl.wizardReady = !0;
+} ], this.ctrl.plans.length < 2 && this.ctrl.steps.shift(), this.initDemo(), this.gotoStep(this.ctrl.steps[0]), this.ctrl.nameTaken = !1, this.ctrl.wizardReady = !0;
 }, a.prototype.getSteps = function() {
 return this.ctrl.steps;
 }, a.prototype.stepClick = function(a) {
@@ -62241,13 +62367,14 @@ a.ctrl.orderInProgress = !0, a.watchResults(c, b, d), a.gotoStepID("results");
 }, function(b) {
 a.ctrl.error = b;
 });
+}, a.prototype.$doCheck = function() {
+this.ctrl.demo && this.ctrl.previousSelectedProject !== this.ctrl.selectedProject && (this.ctrl.previousSelectedProject = this.ctrl.selectedProject, this.listSecrets(this.ctrl.selectedProject.metadata.name));
 }, a.prototype.$onDestroy = function() {
 this.DataService.unwatchAll(this.watches);
 }, a.prototype.closePanel = function() {
 d.isFunction(this.ctrl.handleClose) && this.ctrl.handleClose();
 }, a.prototype.makeServiceInstance = function() {
-var a = e.get(this, "ctrl.serviceClass.resource.metadata.name");
-return {
+var a = e.get(this, "ctrl.serviceClass.resource.metadata.name"), b = {
 kind:"Instance",
 apiVersion:"servicecatalog.k8s.io/v1alpha1",
 metadata:{
@@ -62259,6 +62386,7 @@ serviceClassName:a,
 planName:this.ctrl.selectedPlan.name
 }
 };
+return this.updateDemoServiceInstance(b), b;
 }, a.prototype.gotoStepID = function(a) {
 var b = e.find(this.ctrl.steps, {
 id:a
@@ -62266,9 +62394,46 @@ id:a
 this.gotoStep(b);
 }, a.prototype.isNewProject = function() {
 return this.ctrl.selectedProject && !e.has(this.ctrl.selectedProject, "metadata.uid");
+}, a.prototype.initDemo = function() {
+if (console.log("serviceClass", this.ctrl.serviceClass), this.ctrl.demo = this.ctrl.serviceClass && this.ctrl.serviceClass.resource && this.ctrl.serviceClass.resource.metadata && "rds-postgres-apb" === this.ctrl.serviceClass.resource.metadata.name, console.log("isDemo?", this.ctrl.demo), this.ctrl.demo) {
+var a = [ {
+id:"plans",
+label:"Plans",
+view:"order-service/order-service-plans.html"
+}, {
+label:"Configuration",
+id:"configure",
+view:"order-service/order-service-configure-demo.html"
+}, {
+label:"Results",
+id:"results",
+view:"order-service/order-service-review.html"
+} ];
+this.ctrl.demoOptions = f.demoOptions, this.ctrl.demoData = {
+amazonRegion:f.demoOptions.amazonRegions[0],
+amazonRdsDbInstanceClass:f.demoOptions.amazonRdsDbInstanceClasses[9],
+amazonRdsDbInstanceName:"postgres",
+amazonRdsDbAllocatedStorage:"5"
+}, this.ctrl.longDescription = null, this.ctrl.descriptionBullets = f.demoOptions.amazonRdsPostgresDescriptionBullets, this.ctrl.steps = a, this.ctrl.serviceClass.resource.plans = f.demoOptions.amazonRdsPostgresPlans, this.ctrl.plans = e.get(this, "ctrl.serviceClass.resource.plans", []);
+}
+}, a.prototype.listSecrets = function(a) {
+var b = this;
+if (this.ctrl.demo) return this.ctrl.demoOptions.amazonSecrets = [], this.DataService.list("secrets", {
+namespace:a
+}).then(function(a) {
+b.ctrl.demoOptions.amazonSecrets = e.sortBy(a.by("metadata.name"), "metadata.name"), b.ctrl.demoData.amazonSecret = e.first(b.ctrl.demoOptions.amazonSecrets);
+}, function() {
+b.Logger.log("Error Loading project secrets: ");
+});
+}, a.prototype.updateDemoServiceInstance = function(a) {
+if (this.ctrl.demo) {
+var b = this.ctrl.demoData, c = b.amazonSecret.data, d = {};
+for (var e in c) c.hasOwnProperty(e) && (d[e] = atob(c[e]));
+d.namespace = this.ctrl.selectedProject.metadata.name, d.region = b.amazonRegion.key, d.instance_type = b.amazonRdsDbInstanceClass.key, d.db_name = b.amazonRdsDbInstanceName, d.db_size = b.amazonRdsDbAllocatedStorage, a.spec.parameters = d, console.log("serviceInstance", a);
+}
 }, a;
 }();
-f.$inject = [ "$scope", "$filter", "DataService", "Logger" ], b.OrderServiceController = f;
+g.$inject = [ "$scope", "$filter", "DataService", "Logger" ], b.OrderServiceController = g;
 }, function(a, b, c) {
 "use strict";
 b.__esModule = !0;
@@ -62491,9 +62656,9 @@ a.exports = URI;
 "use strict";
 b.__esModule = !0;
 var d = c(1);
-c(2), c(19);
-var e = c(20), f = c(21), g = c(10), h = c(22), i = c(11), j = c(12), k = c(13), l = c(14), m = c(15), n = c(16), o = c(17), p = c(18);
+c(2), c(20);
+var e = c(21), f = c(22), g = c(11), h = c(23), i = c(12), j = c(13), k = c(14), l = c(15), m = c(16), n = c(17), o = c(18), p = c(19);
 c(2), b.webCatalog = "webCatalog", d.module(b.webCatalog, [ "patternfly", "ngAnimate", "ui.bootstrap", "angularMoment", "ui.select" ]).service("BuilderAppService", f.BuilderAppService).service("Catalog", h.CatalogService).filter("projectUrl", e.projectUrlFilter).component("catalogSearch", g.catalogSearch).component("createFromBuilder", i.createFromBuilder).component("landingPage", j.landingPage).component("orderService", k.orderService).component("overlayPanel", l.overlayPanel).component("projectsSummary", m.projectsSummary).component("saasList", n.saasList).component("selectProject", o.selectProject).component("servicesView", p.servicesView).run([ "$templateCache", function(a) {
-a.put("catalog-search/catalog-search-result.html", c(4)), a.put("create-from-builder/create-from-builder-configure.html", c(5)), a.put("create-from-builder/create-from-builder-results.html", c(6)), a.put("order-service/order-service-plans.html", c(8)), a.put("order-service/order-service-configure.html", c(7)), a.put("order-service/order-service-review.html", c(9));
+a.put("catalog-search/catalog-search-result.html", c(4)), a.put("create-from-builder/create-from-builder-configure.html", c(5)), a.put("create-from-builder/create-from-builder-results.html", c(6)), a.put("order-service/order-service-plans.html", c(9)), a.put("order-service/order-service-configure.html", c(8)), a.put("order-service/order-service-configure-demo.html", c(7)), a.put("order-service/order-service-review.html", c(10));
 } ]);
-} ], [ 42 ]);
+} ], [ 44 ]);
