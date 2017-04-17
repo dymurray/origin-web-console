@@ -40,6 +40,6 @@ make release
 
 # Push images
 ```
-docker tag openshift/origin docker.io/dymurray/origin
-docker push docker.io/dymurray/origin
+docker tag openshift/origin docker.io/ansibleplaybookbundle/origin
+docker push docker.io/ansibleplaybookbundle/origin
 ```
